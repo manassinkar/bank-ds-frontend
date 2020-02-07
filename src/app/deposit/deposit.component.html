@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="jumbotron" style="margin: 15px;padding: 15px;">  
+      <div>
+          <h1 class="h1 mb-3 font-weight-normal" style="text-align: center;">Bank</h1>    </div>  
+      <!-- <div style="text-align: center;"><h3>LOGIN</h3></div>   -->
+      <form class="form-signin" [formGroup]="depositForm" (ngSubmit)="onSubmit()">
+        <div style="padding-left: 40%;">
+            
+        </div>  
+          <h1 class="h3 mb-3 font-weight-normal" style="text-align: center;">Please Deposit</h1>
+          <div class="form-row">
+              <div class="form-group col-md-4"></div>
+              <div class="form-group col-md-4">
+                <label for="amount" class="sr-only">Deposit</label>
+                <input type="text" id="amount" class="form-control" formControlName="amount" placeholder="amount" required autofocus>
+              </div>
+              <div class="form-group col-md-4"></div>
+          </div>
+          <div class="form-group" >
+            <label><b>Account Number: </b></label>
+            <input type="text" class="form-control" *ngIf="user" disabled placeholder="{{ user.accountNo }}"><br>
+        </div>
+          <div class="form-group">
+            <label><b>Wallet Balance: </b></label>
+            <input type="text" class="form-control" *ngIf="user" disabled placeholder="{{ user.balance }}"><br>
+        </div>
+          <div class="form-row">
+              <div class="form-group col-md-4"></div>
+              <div class="form-group col-md-4">
+                  <div class="w-100" style="text-align: center">
+                      <button type="submit" class="btn btn-primary" style="background-color: #DCDCDC;color: black;border-color: black;">Deposit</button>
+                      &nbsp;&nbsp;
+                  </div>
+                  <div class="alert alert-danger w-100 mt-3" *ngIf="errMsg">{{errMsg}}</div>
+              </div>
+              <div class="form-group col-md-4"></div>
+          </div>
+          
+        </form>
+   
+</div>
+</div>

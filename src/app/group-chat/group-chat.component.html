@@ -1,0 +1,14 @@
+<div *ngFor="let x of chatService.messages">
+    <div class="message-right" *ngIf="x.from==username">
+        <p *ngIf="x.message=='joined the chat'">You {{x.message}}</p>
+        <p *ngIf="x.message!='joined the chat'">{{x.message}}</p>
+    </div>
+    <div class="message-left" *ngIf="x.from!=username">
+        <p>{{x.from}}: {{x.message}}</p>
+    </div>
+</div>
+<form [formGroup]="chatForm" id="chatForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <input id="message" autocomplete="off" autofocus="on" placeholder="type your message here..." formControlName="message" class="form-control" /><button>Send</button>
+    </div>
+</form>

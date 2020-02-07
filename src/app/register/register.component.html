@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="jumbotron" style="margin: 15px;padding: 15px;">
+        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center;">Register</h1>    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Name: </label>
+            <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name"><br>
+            <label for="password">Password: </label>
+            <input type="password" class="form-control" id="password" formControlName="password" placeholder="Min strength is 8 characters"><br>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                    <label for="email">Email ID: </label>
+                    <input type="email" class="form-control" id="email" formControlName="email" placeholder="you@example.com"><br>
+            </div>
+            <div class="form-group col-md-6">
+                    <label for="Contact">Contact: </label>
+                    <input type="number" class="form-control" id="contact" formControlName="contact"><br>
+            </div>
+        </div>
+        <div class="w-100" style="text-align: left">
+            <button type="submit" class="btn btn-primary" style="background-color: #DCDCDC;color: black;border-color: black;">Register</button>
+            &nbsp;
+            <button class="btn btn-primary" (click)="login()" style="background-color: #DCDCDC;color: black;border-color: black;">Login</button>
+        </div>
+        <div class="alert alert-danger w-100 mt-3" *ngIf="errMsg">{{errMsg}}</div>
+    </form>
+</div>
+</div>
