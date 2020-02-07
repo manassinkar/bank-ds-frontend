@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
@@ -17,12 +17,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      name: [''],
-      password: [''],
-      email: [''],
-      contact: [],
-      balance: [],
-      
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      contact: ['',Validators.required, Validators.minLength(10), Validators.maxLength(10)],
+      password: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
 
@@ -41,9 +39,6 @@ export class RegisterComponent implements OnInit {
   public get contact()  {
     return this.registerForm.controls.contact;
   }
-  public get balance()  {
-    return this.registerForm.controls.balance;
-  }
   
 
   onSubmit() 
@@ -52,9 +47,8 @@ export class RegisterComponent implements OnInit {
     const password: string = this.registerForm.get('password').value;
     const email: string = this.registerForm.get('email').value;
     const contact: string = this.registerForm.get('contact').value;
-    const balance: Number = this.registerForm.get('balance').value;
-    
-    this.authservice.register(name,password,contact,email,balance).subscribe(
+    console.log('Test')
+    this.authservice.register(name,password,contact,email).subscribe(
       user => {
         this.router.navigate(['']);
       },

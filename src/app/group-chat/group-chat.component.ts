@@ -13,7 +13,7 @@ import { ChatService } from '../services/chat.service';
 export class GroupChatComponent implements OnInit {
   public username: String = '';
   public chatForm: FormGroup;
-  constructor(public socket: Socket, public fb: FormBuilder,public router: Router, private chatService: ChatService) { }
+  constructor(public socket: Socket, public fb: FormBuilder,public router: Router, public chatService: ChatService) { }
 
   ngOnInit() {
     const name = (JSON.parse(localStorage.getItem('currentUser'))).name;
@@ -27,7 +27,7 @@ export class GroupChatComponent implements OnInit {
     this.router.events.subscribe((e: any) => {
       if(e instanceof RoutesRecognized)
       {
-        this.chatService.disconnect(this.username);
+        this.chatService.disconnect();
       }
     });
   }

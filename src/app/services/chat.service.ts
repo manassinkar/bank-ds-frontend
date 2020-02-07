@@ -12,6 +12,7 @@ export class ChatService {
   init(username)
   {
     this.messages = [];
+    this.socket.disconnect();
     this.socket.connect();
     this.socket.emit('username',username);
     if(this.firstTime)
@@ -31,10 +32,11 @@ export class ChatService {
     this.messages.push({from,message});
   }
 
-  disconnect(username)
+  disconnect()
   {
     this.messages = [];
-    this.socket.disconnect(username)
+    const username = JSON.parse(localStorage.getItem('currentUser')).name;
+    this.socket.disconnect(username);
   }
 
   sendMessage(x)

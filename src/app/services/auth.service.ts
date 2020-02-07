@@ -18,9 +18,9 @@ export class AuthService {
       }));
   }
 
-  register(name: string, password:string, contact:string, email:string,balance:Number)
+  register(name: string, password:string, contact:string, email:string)
   {
-    return this.http.post<any>(`${environment.server}/register`,{ name,password,contact,email,balance }).pipe(map(user =>
+    return this.http.post<any>(`${environment.server}/register`,{ name,password,contact,email }).pipe(map(user =>
       {
         return user;
       }));
